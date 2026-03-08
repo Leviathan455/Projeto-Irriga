@@ -1,0 +1,94 @@
+### Register
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "username": "joao",
+  "password": "123456"
+}
+
+###
+
+### Login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "username": "joao",
+  "password": "123456"
+}
+
+###
+
+########################################################################################
+# COLE O TOKEN DEPOIS DO LOGIN  "token"
+########################################################################################
+
+@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ3N2Y5Mjg1LWNiMGYtNDc1MS04MmU4LTQwMmY2N2E0NDJmYyIsInVzZXJuYW1lIjoiam9hbyIsImlhdCI6MTc3Mjk0MDU5NywiZXhwIjoxNzcyOTQ0MTk3fQ.zyhx2ZD1fUVoG-mSYaZigeAkDA07WKjIqOLvDaVcOSA
+#@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwZGUyYmI1LWJiMDMtNDg0OC1hYzc1LTUxMjJlZDhjMGM2NSIsInVzZXJuYW1lIjoidml0b3IiLCJpYXQiOjE3NzI5NDAyODIsImV4cCI6MTc3Mjk0Mzg4Mn0.TaEoqjUKyMG9hZ9y2y37EKe-RIJby6-Ou9bhN5W52Ps
+#######################################################################################
+
+### Criar Pivot (PROTEGIDO)
+POST http://localhost:3000/pivots
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "description": "Pivot Sul - Vitor",
+  "flowRate": "200.0",
+  "minApplicationDepth": 6.0
+}
+
+###
+
+### Listar Pivots (PROTEGIDO)
+GET http://localhost:3000/pivots
+Authorization: Bearer {{token}}
+
+###
+
+### Update Pivot (PROTEGIDO)
+PUT http://localhost:3000/pivots/2c425b08-98fd-4862-a17c-34fb15a4f209
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "description": "Pivot Sul - Vitor - Atualizado",
+  "flowRate": "250.0",
+  "minApplicationDepth": 7.0
+}
+
+
+########################################################################################
+# IRRIGATIONS
+########################################################################################
+
+### Criar Irrigação
+POST http://localhost:3000/irrigations
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "pivotId": "06d27377-13d4-4091-9692-3d372ea9c381",
+  "applicationAmount": 11,
+  "irrigationDate": "2026-03-06"
+}
+
+###
+
+### Listar Irrigações
+GET http://localhost:3000/irrigations
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+### Buscar Irrigação por ID
+GET http://localhost:3000/irrigations/307247df-a512-476a-a878-246c4ebd8c07
+Authorization: Bearer {{token}}
+
+###
+
+### Deletar Irrigação
+DELETE http://localhost:3000/irrigations/307247df-a512-476a-a878-246c4ebd8c07
+Authorization: Bearer {{token}}

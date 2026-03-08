@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+
+<script src="./js/api.js"></script>
+<script src="./js/auth.js"></script>
+<script src="./js/pivot.js"></script>
+<script src="./js/irrigation.js"></script>
+
+</head>
+
+<body>
+
+<h1>Dashboard</h1>
+
+<button onclick="logout()">Logout</button>
+
+<hr>
+
+<h2>Criar Pivo</h2>
+
+<input id="description" placeholder="Description">
+<input id="flowRate" placeholder="Flow Rate">
+<input id="minApplicationDepth" placeholder="Min Depth">
+
+<button onclick="createPivot()">Criar Pivot</button>
+
+<hr>
+
+<h2>Pivots</h2>
+
+<ul id="pivotList"></ul>
+
+<hr>
+
+<h2>Criar Irrigação</h2>
+
+<input id="pivotId" placeholder="Pivot ID">
+<input id="applicationAmount" placeholder="Application Amount">
+<input id="irrigationDate" placeholder="Date YYYY-MM-DD">
+
+<button onclick="createIrrigation()">Criar Irrigação</button>
+
+<hr>
+
+<h2>Irrigações</h2>
+
+<ul id="irrigationList"></ul>
+
+<script>
+
+loadPivots();
+loadIrrigations();
+
+</script>
+
+</body>
+
+</html>
